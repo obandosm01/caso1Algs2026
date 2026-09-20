@@ -1,0 +1,5 @@
+package algs
+
+func greedy() {
+
+}
