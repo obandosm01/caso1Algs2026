@@ -39,22 +39,31 @@ func ProbarPass(pass string) RespuestaServer {
 
 	return resp
 }
-func EncontrarLongitudPass() (uint8, int) {
+func EncontrarLongitudPass() (uint8, int, string) {
 	pass := make([]byte, 2)
 	cantConsultas := 0
-	for letra := byte('a'); letra <= byte('z'); letra++ {
+
+	var longitud uint8
+	longitud = 0
+	for letra := byte('a'); letra <= byte('e'); letra++ {
 		for i := range pass {
 			pass[i] = letra
 		}
+
 		resp := ProbarPass(string(pass))
 		cantConsultas++
+
+		//Si dio SUCCESS, el servidor ya cambió la contraseña
 		if resp.Status == "SUCCESS" {
-			return 2, cantConsultas
+			return 2, cantConsultas, string(pass)
 		}
 
 		if resp.MatchedLetters == 0 && resp.Distance > 0 {
-			return resp.Distance, cantConsultas
+			if resp.Distance > longitud {
+				longitud = resp.Distance
+			}
 		}
 	}
-	return 4, cantConsultas
+
+	return longitud, cantConsultas, ""
 }

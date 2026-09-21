@@ -61,7 +61,7 @@ func imprimirReporte(rep utils.ReporteEvaluacion) {
 }
 
 func main() {
-	reporte := evaluarBacktrack(1)
+	reporte := evaluarBacktrack(10)
 	imprimirReporte(reporte)
 	err := utils.GuardarExcel(reporte)
 	if err != nil {

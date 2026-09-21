@@ -5,11 +5,18 @@ import "caso1/utils"
 func Backtracking() (bool, int, string) {
 	var cantConsultas int
 	cantConsultas = 0
+
+	longitud, consultasLongitud, flag := utils.EncontrarLongitudPass()
+	if flag != "" {
+		return true, consultasLongitud, flag
+	}
+	cantConsultas += consultasLongitud
+
 	//Hace un barrido inicial para:
 	// 	- Descartar letras innecesarias
 	//  - Saber la longitiud de la contraseña
 	// Esta parte del el algoritmo es la poda
-	barridoInicial := make([]byte, 4)
+	barridoInicial := make([]byte, longitud)
 
 	var abecedarioFiltrado []byte
 	var longitudPass uint8
@@ -33,13 +40,13 @@ func Backtracking() (bool, int, string) {
 			longitudPass += respuesta.MatchedLetters
 		}
 
-		//Si ya tiene 4, no busca más
-		if longitudPass == 4 {
+		//Si ya tiene las suficientes, no busca más
+		if longitudPass == longitud {
 			break
 		}
 	}
 
-	guess := make([]byte, longitudPass)
+	guess := make([]byte, longitud)
 	for i := range guess {
 		guess[i] = abecedarioFiltrado[0]
 	}
@@ -66,6 +73,7 @@ func Backtracking() (bool, int, string) {
 				return true, cantConsultas, string(guess)
 			}
 			if respuesta.MatchedLetters < matchedLetters {
+				//Backtracking ------------------------------
 				guess[i] = letraAnterior
 				break
 			}
@@ -75,3 +83,11 @@ func Backtracking() (bool, int, string) {
 	}
 	return false, 0, "ERR"
 }
+
+/*
+Este algoritmo es un algoritmo O(N)
+El algoritmo para encontrar la longitud de la contraseña siempre hace 5 consultas, por lo tanto es O(1).
+En el peor caso, la poda debe hacer 26 consultas, lo cual es O(1).
+Entonces, cantidad de consultas restantes corresponde a la cantidad de letras en la contraseña.
+Entonces, si mi N es la longitud de la contraseña, el algoritmo crece de acuerdo a esa longitud de manera lineal.
+*/
