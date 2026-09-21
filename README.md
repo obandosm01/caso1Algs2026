@@ -1,9 +1,10 @@
 # Caso #1
 Santiago Leonel Obando Morales 2025108098
----
-## Análisis de Algoritmos Gr 3
-## Prof. Rodrigo Nuñez Nuñez
+Análisis de Algoritmos Gr 3
+Prof. Rodrigo Nuñez Nuñez
 
+
+---
 ## Instrucciones para ejecutar el proyecto si fuera necesario:
 0. Instalar Go: Este proyecto está programado en su totalidad en Golang, entonces se debe instalar antes de poder ejecutar el proyecto. Se puede usar [este link](https://go.dev/doc/install). 
 1. Clonar el repositorio:
