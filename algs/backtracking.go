@@ -84,10 +84,13 @@ func Backtracking() (bool, int, string) {
 	return false, 0, "ERR"
 }
 
-/*
-Este algoritmo es un algoritmo O(N)
-El algoritmo para encontrar la longitud de la contraseña siempre hace 5 consultas, por lo tanto es O(1).
-En el peor caso, la poda debe hacer 26 consultas, lo cual es O(1).
-Entonces, cantidad de consultas restantes corresponde a la cantidad de letras en la contraseña.
-Entonces, si mi N es la longitud de la contraseña, el algoritmo crece de acuerdo a esa longitud de manera lineal.
-*/
+// ============================================================================
+// ALGORITMO: Backtracking
+// COMPLEJIDAD BIG-O: O(N) donde N es la longitud de la contraseña.
+// CRECIMIENTO: Lineal (Luego de pruebas empíricas, en promedio, aumenta en ~6 consultas por letra nueva)
+//
+// CRITERIO DE PODA:
+// Prueba todas las letras primero, para armar un abecedario limitado
+// donde solo se prueba especificamente las letras que se sabe con certeza
+// que estan en la contraseña, reduciendo los tanteos innecesarios.
+// ============================================================================
