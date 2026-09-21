@@ -1,6 +1,8 @@
 # Caso #1
 Santiago Leonel Obando Morales 2025108098
+
 Análisis de Algoritmos Gr 3
+
 Prof. Rodrigo Nuñez Nuñez
 
 
